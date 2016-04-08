@@ -22,7 +22,7 @@ table.highlight
       td = link_to '+', new_customer_path(customer["id"])
       td = link_to edit_customer_path(customer["id"])
         i.material-icons settings
-      td = link_to customer_path(customer["id"]), :confirm => 'Are your sure?', :method=> :delete
+      td = link_to customer_path(customer["id"]), :class => "customer_#{customer["id"]}", :confirm => 'Are your sure?', :method=> :delete
         i.material-icons delete
 .col.s4
   = button_to 'Go Back', root_path, method: :get, class: "btn"

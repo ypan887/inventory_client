@@ -31,6 +31,11 @@ class CustomersController < ApplicationController
     end
   end
 
+  def destroy
+    response = InventoryApi.delete_to_server(params)
+    redirect_to customers_path, notice: "Successfully delete customer"
+  end
+
   private
 
   def customer_params
