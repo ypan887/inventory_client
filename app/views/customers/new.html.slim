@@ -1,0 +1,20 @@
+= simple_form_for :customer, :url => customers_path, :remote => true, :html => {:'data-type' => 'json', :multipart => true}, wrapper: :inline_field4, defaults: {required: false} do |f|
+  .row
+    .col.s12
+      #items_field
+        i.small.material-icons perm_identity
+        span New customer
+        .row
+          = f.input :name, placeholder: "Name"
+          = f.input :address, placeholder: "Address"
+          = f.input :country, :as => :string, placeholder: "Country"         
+        .row
+          = f.input :zip_code, placeholder: "Zip"
+          = f.input :photo_id, as: :boolean, wrapper: :inline_bool4, label: "Identification uploaded"
+  .row
+    .col.s12
+      = f.button :button, class:"btn-large"
+        i.material-icons.right cloud
+        |
+          CREATE CUSTOMER
+
