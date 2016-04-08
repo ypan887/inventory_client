@@ -6,28 +6,26 @@ html
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
-  body class=[ @home_page ? 'homepage' : '']
-
+  body class=[@home_page ? 'homepage' : '']
     header
       nav
         .nav-wrapper
           =link_to "XiaoPutao", root_path, class:"brand-logo"
           ul.right.hide-on-med-and-down#nav-mobile
-            li = link_to "Items"
+            li = link_to "Inventory"
             li = link_to "Customers", customers_path
             = render "shared/nav_dropdown"
             li 
               a data-beloworigin="true" class="dropdown-button" data-activates="dropdown2"
                 i.material-icons.right arrow_drop_down 
-                | View Orders
+                | Logistics
             li 
               a data-beloworigin="true" class="dropdown-button" data-activates="dropdown1"
                 i.material-icons.right arrow_drop_down 
-                | View statistics
+                | Statistics
 
           a href="#" data-activates="slide-out" class="button-collapse"
             i.mdi-navigation-menu
-
     main
       .row
         .col.s10.offset-s1
@@ -35,20 +33,27 @@ html
             .alert
               = flash[:notice]
           == yield
-
-    footer class=[ @home_page ? 'homepage' : '']
+    footer class=[@home_page ? 'homepage' : '']
       .footer-copyright
         .container
           |
           2015 Copyright Text
-
     javascript:
       $(document).ready(function(){
         $('.collapsible').collapsible({
           accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
         });
       });
-
+    javascript:
+      $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrain_width: true, // Does not change width of dropdown to that of the activator
+        hover: true, // Activate on hover
+        gutter: 0, // Spacing from edge
+        belowOrigin: false, // Displays dropdown below the button
+        alignment: 'left' // Displays dropdown with edge aligned to the left of button
+      });
     javascript:
       $('.button-collapse').sideNav({
         menuWidth: 200,

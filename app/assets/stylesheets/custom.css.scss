@@ -1,0 +1,182 @@
+@mixin box-shadow {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+  -moz-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+  box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+}
+
+$white: #FFFFFF;
+
+body {
+  background: #fcfcfc;
+  
+  height: 100%;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+nav {
+  margin-bottom: 50px;
+  @include box-shadow;
+  border: none;
+  font-weight: bold;
+
+  .brand-logo {
+    text-transform: uppercase;
+    padding-left: 40px;
+    font-weight: bold;
+    a {
+      color: $white;
+    }
+  }
+
+  .fix {
+    left: 0;
+  }
+
+  ul {
+    padding-right: 30px;
+  }
+}
+
+.row {
+  margin-top: 30px;
+}
+
+.item {
+  background: white;
+  padding: 2em 8%;
+  border-radius: 5px;
+  max-height: 330px;
+  @include box-shadow;
+}
+
+.nested-fields {
+  margin-top: 30px;
+}
+
+.image_wrapper {
+  max-width: 100%;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  }
+
+ul #dropdown1, ul#dropdown2{
+  padding-right: 0;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+
+img {
+    width: 100%;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    &:hover {
+      transform: scale(1.075);
+    }
+  }
+
+select{
+  display: inline;
+}
+
+label.boolean.optional.control-label {
+  margin-left: 20px;
+  margin-top:  40px;
+}
+
+body.homepage {
+  background-image: url('/background1.jpg');
+  background-size: cover;
+
+  nav {
+    background-color: transparent;
+  }
+}
+
+footer {
+  background-color: #ee6e73;
+  color: #fff;
+}
+
+footer.homepage {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fcfcfc;
+}
+
+i.right {
+  line-height: 2;
+}
+
+i.activator {
+  cursor: pointer;
+}
+
+span.card-title.grey-text.text-darken-4.activator.truncate {
+  width: 80%;
+  float: left;
+}
+
+.card.large {
+  height: 420px;
+}
+
+.card.large .card-content {
+  height: auto;
+}
+
+.card .card-action{
+  padding: 0;
+  background-color: #26a69a;
+  a{
+    color: $white;
+    margin: 70px;
+  } 
+}
+
+.left-link {
+  float: left;
+  width: 50%;
+  border-right: solid white;
+  padding-top: 15px;
+  height: 50px;
+}
+
+.right-link {
+  float:right;
+  padding-top: 15px;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.checkbox {
+  padding-top: 20px;
+}
+
+.shipment div:last-of-type {
+  height: 0px;
+}
+
+#slide-out {
+  padding-right: 0;
+  background-color: $white;
+  background-size: 100%;
+}
+
+#items_field {
+  background: white;
+  @include box-shadow;
+  border-radius: 5px;
+  padding: 2em 8%;
+  margin-bottom: 20px;
+}

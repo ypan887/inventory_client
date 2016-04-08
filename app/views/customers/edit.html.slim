@@ -10,7 +10,7 @@
           = f.input :country, :as => :string, placeholder: "Country"         
         .row
           = f.input :zip_code, placeholder: "Zip"
-          = f.input :photo_id, as: :boolean, wrapper: :inline_bool4, label: "Identification uploaded"
+          = f.input :photo_id, :input_html => { :type => "checkbox", :id => "photo_id_check" }, wrapper: :inline_bool4, label: "Identification uploaded"
           = f.input :id, :as => :hidden, :input_html => { :value => params[:id] }
   .row
     .col.s12
