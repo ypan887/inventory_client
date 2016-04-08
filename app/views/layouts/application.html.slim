@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    title Inventory Control APP
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
+  body class=[ @home_page ? 'homepage' : '']
+
+    header
+      nav
+        .nav-wrapper
+          =link_to "XiaoPutao", root_path, class:"brand-logo"
+          ul.right.hide-on-med-and-down#nav-mobile
+            li = link_to "Items", #
+            li = link_to "Customers", customers_path
+            = render "shared/nav_dropdown"
+            li 
+              a data-beloworigin="true" class="dropdown-button" data-activates="dropdown2"
+                i.material-icons.right arrow_drop_down 
+                | View Orders
+            li 
+              a data-beloworigin="true" class="dropdown-button" data-activates="dropdown1"
+                i.material-icons.right arrow_drop_down 
+                | View statistics
+
+          a href="#" data-activates="slide-out" class="button-collapse"
+            i.mdi-navigation-menu
+
+    main
+      .row
+        .col.s10.offset-s1
+          - if flash[:notice]
+            .alert
+              = flash[:notice]
+          == yield
+
+    footer class=[ @home_page ? 'homepage' : '']
+      .footer-copyright
+        .container
+          |
+          2015 Copyright Text
+
+    javascript:
+      $(document).ready(function(){
+        $('.collapsible').collapsible({
+          accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+      });
+
+    javascript:
+      $('.button-collapse').sideNav({
+        menuWidth: 200,
+        edge: 'left', // Choose the horizontal origin
+      });
+    
