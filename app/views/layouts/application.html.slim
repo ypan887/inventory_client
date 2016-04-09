@@ -6,7 +6,7 @@ html
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
-  body class=[@home_page ? 'homepage' : '']
+  body id = "body#{@home_page ? '_homepage' : ''}"
     header
       nav
         .nav-wrapper
@@ -33,7 +33,7 @@ html
             .alert
               = flash[:notice]
           == yield
-    footer class=[@home_page ? 'homepage' : '']
+    footer id = "footer#{@home_page ? '_homepage' : ''}"
       .footer-copyright
         .container
           |

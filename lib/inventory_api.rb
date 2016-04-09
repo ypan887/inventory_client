@@ -7,15 +7,7 @@ class InventoryApi
  
   def self.get_all(model)
     response = get("/#{model}")
-    if response.success?
-      response["data"]
-    else
-      raise response.response
-    end
-  end
-
-  def self.get_by_id(model, id)
-    response = get("/#{model}/#{id}")
+    response["data"]
   end
 
   def self.post_to_server(params)
