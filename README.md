@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/ypan887/inventory_client.svg?branch=master)](https://travis-ci.org/ypan887/inventoy_client)
+[![Build Status](https://travis-ci.org/ypan887/inventory_client.svg?branch=master)](https://travis-ci.org/ypan887/inventory_client)
+[![Coverage Status](https://coveralls.io/repos/github/ypan887/inventory_client/badge.svg?branch=master)](https://coveralls.io/github/ypan887/inventory_client?branch=master)
 
 https://travis-ci.org/ypan887/inventory_client.svg?branch=master
 
