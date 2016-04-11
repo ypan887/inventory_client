@@ -4,7 +4,9 @@
 # Introduction
 This is an RESTful Api client for my Inventory api. You can find the api [here](https://github.com/ypan887/inventory_api)
 
-Only the customer CRUD operations was complete and tested for now. More features will be added soon.
+Only the customer CRUD operations has been completde and tested. More features will be added soon.
+
+You can find a demon version [here](https://inv-client.herokuapp.com/)
 
 # Installation
 
