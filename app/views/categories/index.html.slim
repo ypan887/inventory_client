@@ -1,0 +1,24 @@
+h2 Categories
+
+ul.collapsible.popout
+  -@categories.each do |category|
+    li
+      .collapsible-header
+        = category["attributes"]["name"]
+      .collapsible-body
+        table.highlight
+          tr
+            th Product Name
+            th Product Description
+            th Selling Price
+          
+          - category["attributes"]["products"].each do |product|
+            tr 
+              td = product["name"]
+              td = product["description"]
+              td = number_to_currency(product["price"], locale: 'en')
+
+.col.s4
+  = button_to 'Go Back', root_path, method: :get, class: "btn"
+.col.s4
+  = button_to 'Add Item', new_category_path, method: :get, class: "btn"

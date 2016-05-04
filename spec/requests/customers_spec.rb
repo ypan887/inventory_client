@@ -80,9 +80,8 @@ describe "customers", type: :request do
     it "should delete the customers" do
       visit "/customers"
       page.find(".customer_#{@customers.last["id"]}").click
-      # page.accept_confirm { click_button "Sure" }
       new_customers = InventoryApi.get_all("customers")
-      # expect(page).to have_content "Successfully delete customer"
+      expect(page).to have_content "Successfully delete customer"
       expect(new_customers.size).to eq(@customers.size - 1)
     end
   end
