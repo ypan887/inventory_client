@@ -22,7 +22,7 @@ class CustomersController < ApplicationController
   end
 
   def update
-    response = InventoryApi.patch_to_server(customer_params)
+    response = InventoryApi.patch_to_server('customers', customer_params)
     if response["errors"].nil?
       redirect_to customers_path
     else

@@ -4,7 +4,7 @@ require 'inventory_api'
 describe "categories", type: :request do
 
   describe 'reading categories' do
-    it "should render customers index page" do
+    it "should render categories index page" do
       get '/categories'
       expect(response).to have_http_status(200)
       expect(response).to render_template('index')
@@ -37,47 +37,47 @@ describe "categories", type: :request do
     end
   end
 
-  # describe 'edit customers' do
+  describe 'edit categories' do
+    before do
+      @categories = InventoryApi.get_all("categories")
+    end
+
+    it "should render form to edit categories" do
+      get "/categories/#{@categories.last["id"].to_i}/edit"
+      expect(response).to have_http_status(200)
+      expect(response).to render_template('edit')
+    end
+
+    it "should update categories with correct information" do
+      visit "/categories/#{@categories.last["id"].to_i}/edit"
+      within(".category") do
+        fill_in 'Name', :with => "changed category"
+      end
+      click_button 'Edit Category'
+      expect(page).to have_content "Changed category"
+    end
+
+    it "should render errors with incorrect information" do
+      visit "/categories/#{@categories.last["id"].to_i}/edit"
+      within(".category") do
+        fill_in 'Name', :with => ""
+      end
+      click_button 'Edit Category'
+      expect(page).to have_content "can't be blank"
+    end
+  end
+
+  # describe 'delete categories' do
   #   before do
-  #     @customers = InventoryApi.get_all("customers")
+  #     @categories = InventoryApi.get_all("categories")
   #   end
 
-  #   it "should render form to edit customer" do
-  #     get "/customers/#{@customers.last["id"].to_i}/edit"
-  #     expect(response).to have_http_status(200)
-  #     expect(response).to render_template('edit')
-  #   end
-
-  #   it "should update customers with correct information" do
-  #     visit "/customers/#{@customers.last["id"].to_i}/edit"
-  #     within(".customer") do
-  #       fill_in 'Name', :with => "Adam"
-  #     end
-  #     click_button 'Edit Customer'
-  #     expect(page).to have_content "Adam"
-  #   end
-
-  #   it "should render errors with incorrect information" do
-  #     visit "/customers/#{@customers.last["id"].to_i}/edit"
-  #     within(".customer") do
-  #       fill_in 'Name', :with => ""
-  #     end
-  #     click_button 'Edit Customer'
-  #     expect(page).to have_content "can't be blank"
-  #   end
-  # end
-
-  # describe 'delete customers' do
-  #   before do
-  #     @customers = InventoryApi.get_all("customers")
-  #   end
-
-  #   it "should delete the customers" do
-  #     visit "/customers"
-  #     page.find(".customer_#{@customers.last["id"]}").click
-  #     new_customers = InventoryApi.get_all("customers")
-  #     expect(page).to have_content "Successfully delete customer"
-  #     expect(new_customers.size).to eq(@customers.size - 1)
+  #   it "should delete the categories" do
+  #     visit "/categories"
+  #     page.find(".category_#{@categories.last["id"]}").click
+  #     new_categories = InventoryApi.get_all("categories")
+  #     expect(page).to have_content "Successfully delete category"
+  #     expect(new_categories.size).to eq(@categories.size - 1)
   #   end
   # end
 end

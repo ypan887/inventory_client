@@ -14,8 +14,8 @@ class InventoryApi
     response = post("/#{model}", :body => params.to_json, :headers => { 'Content-Type' => 'application/json' })
   end
 
-  def self.patch_to_server(params)
-    response = patch("/customers/#{params[:id]}", :body => params.to_json, :headers => { 'Content-Type' => 'application/json' })
+  def self.patch_to_server(model, params)
+    response = patch("/#{model}/#{params[:id]}", :body => params.to_json, :headers => { 'Content-Type' => 'application/json' })
   end
 
   def self.delete_to_server(params)

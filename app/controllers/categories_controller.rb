@@ -9,9 +9,22 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    response = InventoryApi.post_to_server('categories',category_params)
+    response = InventoryApi.post_to_server('categories', category_params)
     if response["errors"].nil?
       redirect_to categories_path 
+    else
+      error = (response["errors"].keys+response["errors"].values).join(" ")
+      redirect_to :back, :notice => error
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    response = InventoryApi.patch_to_server('categories', category_params)
+    if response["errors"].nil?
+      redirect_to categories_path
     else
       error = (response["errors"].keys+response["errors"].values).join(" ")
       redirect_to :back, :notice => error
