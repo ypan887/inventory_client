@@ -18,8 +18,8 @@ class InventoryApi
     response = patch("/#{model}/#{params[:id]}", :body => params.to_json, :headers => { 'Content-Type' => 'application/json' })
   end
 
-  def self.delete_to_server(params)
-    response = delete("/customers/#{params[:id]}")
+  def self.delete_to_server(model, params)
+    response = delete("/#{model}/#{params[:id]}")
   end
 
 end

@@ -67,17 +67,17 @@ describe "categories", type: :request do
     end
   end
 
-  # describe 'delete categories' do
-  #   before do
-  #     @categories = InventoryApi.get_all("categories")
-  #   end
+  describe 'delete categories' do
+    before do
+      @categories = InventoryApi.get_all("categories")
+    end
 
-  #   it "should delete the categories" do
-  #     visit "/categories"
-  #     page.find(".category_#{@categories.last["id"]}").click
-  #     new_categories = InventoryApi.get_all("categories")
-  #     expect(page).to have_content "Successfully delete category"
-  #     expect(new_categories.size).to eq(@categories.size - 1)
-  #   end
-  # end
+    it "should delete the categories" do
+      visit "/categories"
+      page.find(".category_#{@categories.last["id"]}").click
+      new_categories = InventoryApi.get_all("categories")
+      expect(page).to have_content "Successfully delete category"
+      expect(new_categories.size).to eq(@categories.size - 1)
+    end
+  end
 end

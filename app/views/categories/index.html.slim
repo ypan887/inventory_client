@@ -5,6 +5,12 @@ ul.collapsible.popout
     li
       .collapsible-header
         = category["attributes"]["name"]
+        = link_to edit_category_path(category["id"])
+          i.material-icons add
+        = link_to edit_category_path(category["id"])
+          i.material-icons settings
+        = link_to category_path(category["id"]), :class => "category_#{category["id"]} right", :confirm => 'Are your sure?', :method=> :delete
+          i.material-icons delete
       .collapsible-body
         table.highlight
           tr
@@ -21,4 +27,4 @@ ul.collapsible.popout
 .col.s4
   = button_to 'Go Back', root_path, method: :get, class: "btn"
 .col.s4
-  = button_to 'Add Item', new_category_path, method: :get, class: "btn"
+  = button_to 'Add Category', new_category_path, method: :get, class: "btn"

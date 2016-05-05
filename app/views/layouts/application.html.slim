@@ -12,7 +12,7 @@ html
         .nav-wrapper
           =link_to "XiaoPutao", root_path, class:"brand-logo"
           ul.right.hide-on-med-and-down#nav-mobile
-            li = link_to "Inventory"
+            li = link_to "Inventory", categories_path
             li = link_to "Customers", customers_path
             = render "shared/nav_dropdown"
             li 
