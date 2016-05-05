@@ -12,36 +12,30 @@ describe "categories", type: :request do
     end
   end
 
-  # describe 'create new customers' do
-  #   let(:name){ "steve" }
-  #   let(:address){ "450 Serra Mall，Stanford, CA" }
-  #   let(:country){ "USA" }
-  #   let(:zip_code){ "94305" }
+  describe 'create new category' do
+    let(:name){ "new category" }
 
-  #   it "should render form to create customers" do
-  #     get '/customers/new'
-  #     expect(response).to have_http_status(200)
-  #     expect(response).to render_template('new')
-  #   end
+    it "should render form to create category" do
+      get '/categories/new'
+      expect(response).to have_http_status(200)
+      expect(response).to render_template('new')
+    end
 
-  #   it "should create a new customers with correct information" do
-  #     visit '/customers/new'
-  #     within(".customer") do
-  #       fill_in 'Name', :with => name
-  #       fill_in 'Address', :with => address
-  #       fill_in 'Country', :with => country
-  #       fill_in 'Zip', :with => zip_code
-  #     end
-  #     click_button 'CREATE CUSTOMER'
-  #     expect(page).to have_content name
-  #   end
+    it "should create a new category with correct information" do
+      visit '/categories/new'
+      within(".category") do
+        fill_in 'Name', :with => name
+      end
+      click_button 'Add Category'
+      expect(page).to have_content name.capitalize
+    end
 
-  #   it "should render errors with incorrect information" do
-  #     visit '/customers/new'
-  #     click_button 'CREATE CUSTOMER'
-  #     expect(page).to have_content "can't be blank"
-  #   end
-  # end
+    it "should render errors with incorrect information" do
+      visit '/categories/new'
+      click_button 'Add Category'
+      expect(page).to have_content "can't be blank"
+    end
+  end
 
   # describe 'edit customers' do
   #   before do

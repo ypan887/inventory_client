@@ -9,9 +9,9 @@ class CustomersController < ApplicationController
   end
 
   def create
-    response = InventoryApi.post_to_server(customer_params)
+    response = InventoryApi.post_to_server('customers',customer_params)
     if response["errors"].nil?
-      redirect_to customers_path    #This statement is important
+      redirect_to customers_path   
     else
       error = (response["errors"].keys+response["errors"].values).join(" ")
       redirect_to :back, :notice => error
@@ -24,7 +24,7 @@ class CustomersController < ApplicationController
   def update
     response = InventoryApi.patch_to_server(customer_params)
     if response["errors"].nil?
-      redirect_to customers_path    #This statement is important
+      redirect_to customers_path
     else
       error = (response["errors"].keys+response["errors"].values).join(" ")
       redirect_to :back, :notice => error

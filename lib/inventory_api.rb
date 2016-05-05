@@ -10,8 +10,8 @@ class InventoryApi
     response["data"]
   end
 
-  def self.post_to_server(params)
-    response = post('/customers', :body => params.to_json, :headers => { 'Content-Type' => 'application/json' })
+  def self.post_to_server(model, params)
+    response = post("/#{model}", :body => params.to_json, :headers => { 'Content-Type' => 'application/json' })
   end
 
   def self.patch_to_server(params)

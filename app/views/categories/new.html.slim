@@ -1,0 +1,15 @@
+= simple_form_for :category, url: categories_path, :html => {:'data-type' => 'json', :multipart => true}, wrapper: :inline_field4, defaults: {required: false} do |f|
+  .row
+    .col.s12
+      #items_field
+        i.small.material-icons store
+        span Category
+        .row
+          = f.input :name, placeholder: "Category Name"
+          = f.input :description, placeholder: "Description(optional)"
+  .row
+    .col.s12
+      = f.button :button, class:"btn-large"
+        i.material-icons.right cloud
+        |
+          Add Category
