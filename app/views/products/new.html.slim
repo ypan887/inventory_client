@@ -1,0 +1,17 @@
+= simple_form_for :product, url: category_products_path(category_id:params[:category_id]), :html => {:'data-type' => 'json', :multipart => true}, wrapper: :inline_field4, defaults: {required: false} do |f|
+  .row
+    .col.s12
+      #items_field
+        i.small.material-icons store
+        span New products
+        .row
+          = f.input :name, placeholder: "Product Name"
+          = f.input :price, placeholder: "Current Sell Price $"
+          = f.input :cost, placeholder: "Current Cost $"
+          = f.input :category_id, :as => :hidden, :input_html => { :value => params[:category_id] }
+  .row
+    .col.s12
+      = f.button :button, class:"btn-large"
+        i.material-icons.right cloud
+        |
+          Add Products

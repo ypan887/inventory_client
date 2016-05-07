@@ -17,12 +17,18 @@ ul.collapsible.popout
             th Product Name
             th Product Description
             th Selling Price
+            th Cost
           
           - category["attributes"]["products"].each do |product|
             tr 
               td = product["name"]
               td = product["description"]
               td = number_to_currency(product["price"], locale: 'en')
+              td = number_to_currency(product["cost"], locale: 'en')
+          tr
+            td(colspan=3) = link_to new_category_product_path(category_id: category["id"]), :title => 'Add new item'
+              i.material-icons add
+
 
 .col.s4
   = button_to 'Go Back', root_path, method: :get, class: "btn"
