@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :categories do
     resources :products, only: [:new, :create]
   end
+
+  resources :products, only: [:destroy]
 end

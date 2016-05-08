@@ -180,3 +180,32 @@ span.card-title.grey-text.text-darken-4.activator.truncate {
   padding: 2em 8%;
   margin-bottom: 20px;
 }
+
+
+.first-column{
+  padding: 15px 0px 15px 15px;
+}
+
+
+td.action {
+  padding: 0px;
+}
+
+th.last-column{
+  text-align: center;
+}
+
+span.action {
+  padding: 0px;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+}
+
+i.action{
+  line-height: 2;
+}
+
+.collapsible.popout > li {
+  margin: 0px;
+}

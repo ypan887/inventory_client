@@ -1,32 +1,38 @@
-h2 Categories
+h3 Categories
 
 ul.collapsible.popout
   -@categories.each do |category|
     li
       .collapsible-header
         = category["attributes"]["name"]
-        = link_to edit_category_path(category["id"])
-          i.material-icons add
-        = link_to edit_category_path(category["id"])
+        = link_to edit_category_path(category["id"]), :class => "right tooltipped", data:{ position: "left", delay: "50", tooltip: "Edit Category"}
           i.material-icons settings
-        = link_to category_path(category["id"]), :class => "category_#{category["id"]} right", :confirm => 'Are your sure?', :method=> :delete
+        = link_to category_path(category["id"]), :class => "category_#{category["id"]} right", data:{ position: "right tooltipped", delay: "50", tooltip: "Delete Category"}, :confirm => 'Are your sure?', :method=> :delete
           i.material-icons delete
       .collapsible-body
         table.highlight
           tr
-            th Product Name
-            th Product Description
+            th(class="first-column") Product Name
             th Selling Price
             th Cost
+            th Product Description
+            th(class="last-column") Action
           
           - category["attributes"]["products"].each do |product|
             tr 
-              td = product["name"]
-              td = product["description"]
+              td(class="first-column") = product["name"]
               td = number_to_currency(product["price"], locale: 'en')
               td = number_to_currency(product["cost"], locale: 'en')
+              td = product["description"]
+              td(class="action")
+                span.action.waves-effect.waves-red 
+                  = link_to product_path(:id => product["id"]), :class=>'tooltipped', data:{ position: "left", delay: "50", tooltip: "Edit Product"}, :confirm => 'Are your sure?', :method=> :delete
+                    i.material-icons.action equalizer
+                span.action.waves-effect.waves-green
+                  = link_to product_path(:id => product["id"]), :class=>'tooltipped', data:{ position: "left", delay: "50", tooltip: "Delete Product"}, :confirm => 'Are your sure?', :method=> :delete
+                    i.material-icons.action clear
           tr
-            td(colspan=3) = link_to new_category_product_path(category_id: category["id"]), :title => 'Add new item'
+            td(colspan=5 class="first-column") = link_to new_category_product_path(category_id: category["id"]), :class=>'tooltipped', data:{ position: "right", delay: "50", tooltip: "Add new product"}
               i.material-icons add
 
 

@@ -13,13 +13,8 @@ describe "products", type: :request do
       InventoryApi.post_to_server('customers', ActionController::Parameters.new({ category: { name: category_name}}))
       @categories = InventoryApi.get_all("categories")
     end
-    # it "should craete product" do
-    #   get '/categories/new'
-    #   expect(response).to have_http_status(200)
-    #   expect(response).to render_template('new')
-    # end
 
-    it "should create a new category with correct information" do
+    it "should create a new product with correct information" do
       visit "/categories/#{@categories.last["id"].to_i}/products/new"
       within(".product") do
         fill_in 'Name', :with => name
@@ -30,10 +25,19 @@ describe "products", type: :request do
       expect(page).to have_content name
     end
 
-    # it "should render errors with incorrect information" do
-    #   visit '/categories/new'
-    #   click_button 'Add Category'
-    #   expect(page).to have_content "can't be blank"
-    # end
+  describe 'delete product' do
+    before do
+      @products = InventoryApi.get_all("products")
+    end
+
+    it "should delete the categories" do
+      visit "/categories"
+      page.find(".category_#{@categories.last["id"]}").click
+      new_categories = InventoryApi.get_all("categories")
+      expect(page).to have_content "Successfully delete category"
+      expect(new_categories.size).to eq(@categories.size - 1)
+    end
+  end
+    
   end
 end
