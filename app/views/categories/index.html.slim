@@ -29,7 +29,7 @@ ul.collapsible.popout
                   = link_to product_path(:id => product["id"]), :class=>'tooltipped', data:{ position: "left", delay: "50", tooltip: "Edit Product"}, :confirm => 'Are your sure?', :method=> :delete
                     i.material-icons.action equalizer
                 span.action.waves-effect.waves-green
-                  = link_to product_path(:id => product["id"]), :class=>'tooltipped', data:{ position: "left", delay: "50", tooltip: "Delete Product"}, :confirm => 'Are your sure?', :method=> :delete
+                  = link_to product_path(:id => product["id"]), :class=>"products_#{product["id"]} tooltipped", data:{ position: "left", delay: "50", tooltip: "Delete Product"}, :confirm => 'Are your sure?', :method=> :delete
                     i.material-icons.action clear
           tr
             td(colspan=5 class="first-column") = link_to new_category_product_path(category_id: category["id"]), :class=>'tooltipped', data:{ position: "right", delay: "50", tooltip: "Add new product"}

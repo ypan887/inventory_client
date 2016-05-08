@@ -12,6 +12,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    response = InventoryApi.delete_to_server('products', params)
+    redirect_to categories_path, notice: "Successfully delete products"
+  end
+
 private
 
   def product_params

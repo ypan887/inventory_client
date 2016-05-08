@@ -27,15 +27,15 @@ describe "products", type: :request do
 
   describe 'delete product' do
     before do
-      @products = InventoryApi.get_all("products")
+      @products = InventoryApi.get_all("categories").inject([]){|a, h| a << h["attributes"]["products"]}.flatten.sort_by{|h| h["id"]}
     end
 
     it "should delete the categories" do
       visit "/categories"
-      page.find(".category_#{@categories.last["id"]}").click
-      new_categories = InventoryApi.get_all("categories")
-      expect(page).to have_content "Successfully delete category"
-      expect(new_categories.size).to eq(@categories.size - 1)
+      page.find(".products_#{@products.last["id"]}").click
+      expect(page).to have_content "Successfully delete product"
+      new_products = InventoryApi.get_all("categories").inject([]){|a, h| a << h["attributes"]["products"]}.flatten
+      expect(new_products.size).to eq(@products.size - 1)
     end
   end
     
