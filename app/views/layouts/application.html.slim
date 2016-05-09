@@ -29,9 +29,13 @@ html
     main
       .row
         .col.s10.offset-s1
-          - if flash[:notice]
+          - unless flash[:alert].nil?
             .alert
-              = flash[:notice]
+              - flash[:alert].each do |m|
+                div
+                  strong
+                    |Error! 
+                  = "#{m}"
           == yield
     footer id = "footer#{@home_page ? '_homepage' : ''}"
       .footer-copyright

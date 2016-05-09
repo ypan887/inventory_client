@@ -7,8 +7,29 @@ class ProductsController < ApplicationController
     if response["errors"].nil?
       redirect_to categories_path 
     else
-      error = (response["errors"].keys+response["errors"].values).join(" ")
-      redirect_to :back, :notice => error
+      error = response["errors"]
+      redirect_to :back, :alert => error
+    end
+  end
+
+  def edit
+    categories = InventoryApi.get_all("categories")
+    id = params[:id].to_i
+    @current_product = []
+    @categories_collection = categories.map do |a|
+      m = (a["attributes"]["products"]).select{ |h| h["id"] == id }
+      @current_product = m unless m.empty?
+      [a["attributes"]["name"], a["id"]]
+    end
+  end
+
+  def update
+    response = InventoryApi.patch_to_server('products', product_params)
+    if response["errors"].nil?
+      redirect_to categories_path
+    else
+      error = response["errors"]
+      redirect_to :back, :alert => error
     end
   end
 

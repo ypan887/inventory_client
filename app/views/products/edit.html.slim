@@ -1,0 +1,19 @@
+= simple_form_for :product, url: product_path(id:params[:id]), :method => :patch, :html => {:'data-type' => 'json', :multipart => true}, wrapper: :inline_field4, defaults: {required: false} do |f|
+  .row
+    .col.s12
+      #items_field
+        i.small.material-icons store
+        span Edit products
+        .row
+          = f.input :name, :input_html => { value: "#{@current_product.first["name"]}" }
+          = f.input :price, :input_html => { value: "#{@current_product.first["price"]}" }
+          = f.input :cost, :input_html => { value: "#{@current_product.first["cost"]}" }
+        .row
+          = f.input :category_id, collection: @categories_collection, label: "Category", include_blank: false, input_html:{ class: "chosen-select, browser-default"}
+          = f.input :id, :as => :hidden, :input_html => { :value => params[:id] }
+  .row
+    .col.s12
+      = f.button :button, class:"btn-large"
+        i.material-icons.right cloud
+        |
+          Edit Product
