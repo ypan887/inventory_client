@@ -4,7 +4,7 @@
 # Introduction
 This is an RESTful Api client for my Inventory api. You can find the api [here](https://github.com/ypan887/inventory_api)
 
-Only the customer CRUD operations has been completde and tested. More features will be added soon.
+Right now, the app is able to interact with the categories, products and customers resources from the api. 
 
 You can find a demon version [here](https://inv-client.herokuapp.com/)
 
@@ -27,3 +27,6 @@ For covenience, this client app directly interact with the demo api that I depol
 base_uri "52.37.73.85"  # Change it to your own api server address. For example, "localhost:3000" if you simply launch the api with rails server
 ```
 
+# Next
+
+The next step is to add features for shipments, supplies, and statement. When these basic feature is done. I will try refactor the app for better performance and add AJAX for forms.
