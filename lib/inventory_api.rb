@@ -10,6 +10,11 @@ class InventoryApi
     response["data"]
   end
 
+  def self.get_one(model, *ids)
+    response = get("/#{model}/#{ids.first}")
+    response["data"]
+  end
+
   def self.post_to_server(model, params)
     response = post("/#{model}", :body => params.to_json, :headers => { 'Content-Type' => 'application/json' })
   end

@@ -19,6 +19,7 @@ class CustomersController < ApplicationController
   end
 
   def edit
+    @current_customer = InventoryApi.get_one("customers", params[:id])["attributes"]
   end
 
   def update

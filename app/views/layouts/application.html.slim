@@ -29,13 +29,8 @@ html
     main
       .row
         .col.s10.offset-s1
-          - unless flash[:alert].nil?
-            .alert
-              - flash[:alert].each do |m|
-                div
-                  strong
-                    |Error! 
-                  = "#{m}"
+          = render "shared/alert" unless flash[:alert].nil?
+          = render "shared/notice" unless flash[:notice].nil?
           == yield
     footer id = "footer#{@home_page ? '_homepage' : ''}"
       .footer-copyright
@@ -47,6 +42,10 @@ html
         $('.collapsible').collapsible({
           accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
         });
+      });
+    javascript:
+      $(document).ready(function() {
+        $('select').material_select();
       });
     javascript:
       $('.dropdown-button').dropdown({

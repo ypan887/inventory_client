@@ -1,0 +1,6 @@
+.alert
+  - flash[:alert].each do |m|
+    div
+      strong
+        |Error! 
+      = "#{m}"

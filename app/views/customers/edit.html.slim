@@ -5,12 +5,12 @@
         i.small.material-icons perm_identity
         span Edit customer
         .row
-          = f.input :name, placeholder: "Name"
-          = f.input :address, placeholder: "Address"
-          = f.input :country, :as => :string, placeholder: "Country"         
+          = f.input :name, :input_html => { value: "#{@current_customer["name"]}" }
+          = f.input :address, :input_html => { value: "#{@current_customer["address"]}" }
+          = f.input :country, :as => :string, :input_html => { value: "#{@current_customer["country"]}" }         
         .row
-          = f.input :zip_code, placeholder: "Zip"
-          = f.input :photo_id, :input_html => { :type => "checkbox", :id => "photo_id_check" }, wrapper: :inline_bool4, label: "Identification uploaded"
+          = f.input :zip_code, :input_html => { value: "#{@current_customer["zip_code"]}" }
+          = f.input :photo_id, :input_html => { :type => "checkbox", :id => "photo_id_check", checked: @current_customer["photo_id"]}, wrapper: :inline_bool4, label: "Identification uploaded"
           = f.input :id, :as => :hidden, :input_html => { :value => params[:id] }
   .row
     .col.s12

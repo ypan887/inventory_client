@@ -24,6 +24,12 @@ describe "products", type: :request do
       click_button 'Add Product'
       expect(page).to have_content name
     end
+
+    it "should render errors with incorrect information" do
+      visit "/categories/#{@categories.last["id"].to_i}/products/new"
+      click_button 'Add Product'
+      expect(page).to have_content "can't be blank"
+    end
   end
 
   describe 'edit products' do

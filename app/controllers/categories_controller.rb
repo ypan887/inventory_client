@@ -19,6 +19,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    @current_category = InventoryApi.get_one("categories", params[:id])
   end
 
   def update
