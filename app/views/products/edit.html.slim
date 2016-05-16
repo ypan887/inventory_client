@@ -9,7 +9,7 @@
           = f.input :price, :input_html => { value: "#{@current_product.first["price"]}" }
           = f.input :cost, :input_html => { value: "#{@current_product.first["cost"]}" }
         .row
-          = f.input :category_id, collection: @categories_collection, label: "Category", include_blank: false, selected: @current_product.first["category_id"]
+          = f.input :category_id, collection: @categories_collection, label: "Category", include_blank: false, selected: @current_product.first["category_id"], :input_html => { :class => "browser-default" }
           = f.input :id, :as => :hidden, :input_html => { :value => params[:id] }
   .row
     .col.s12
