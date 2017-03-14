@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/ypan887/inventory_client/badge.svg?branch=master)](https://coveralls.io/github/ypan887/inventory_client?branch=master)
 
 # Introduction
-This is a client app for my Inventory api. You can find the api [here](https://github.com/ypan887/inventory_api)
+This is a client app for my Inventory api. It can be used to manage inventory.
 
 Right now, the app is able to interact with categories, products and customers resources from the api. 
 
